@@ -1,4 +1,7 @@
-module BancoReg(IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2); 
+module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2); 
+
+  //Clock
+  input Clock;
 
   //Portas I/O
   input [1:0] IdReg, Fonte1, Fonte2;
@@ -11,44 +14,47 @@ module BancoReg(IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2);
   reg [31:0] RegFonteB; //Registrador de 32Bits - Registrador 1
   reg [31:0] RegAcumulador; //Registrador de 32Bits - Registrador 2
 
-  wire aux;
+  //Borda de Decida
+  always@(negedge Clock) begin
+  //$dumpfile("BancoReg.vcd");
+  //$dumpvars;
+    //Corpo - Escrita
+    if(Escrita == 1'b1) begin
+      case(IdReg) 
+        2'b00: //Escreve no Registrador 0
+          RegFonteA = Dado; 
+        2'b01: //Escreve no Registrador 1
+          RegFonteB= Dado;
+        2'b10: //Escreve no Registrador 2
+          RegAcumulador = Dado; 
+      endcase
+    end
+  end
 
-  //Lógica da Função
-  initial
-    begin
-      //Corpo
-
-      if(Escrita == 1'b1) begin
-        case(IdReg) //Essa parte ainda não funciona
-          2'b00: $display("Hello, World"); //Escreve no Registrador 0
-            RegFonteA = Dado; 
-          2'b01: //Escreve no Registrador 1
-            RegFonteB = Dado;
-          2'b10: //Escreve no Registrador 2
-            RegAcumulador = Dado 
-        endcase
-      end
-      else begin
+  //Borda de Subida
+  always@(posedge Clock) begin
+    //Corpo - Leitura
+      if(Escrita == 1'b0) begin
         case(Fonte1) //A partiri dessa parte funciona
-          2'b00, 2'b00: //Lê Registrador 0
+          2'b00: //Lê Registrador 0
             DadoLido1 = RegFonteA;
-          2'b00, 2'b01: //Lê Registrador 1
+          2'b01: //Lê Registrador 1
             DadoLido1 = RegFonteB;
-          2'b01, 2'b00: //Lê Registrador 2
+          2'b10: //Lê Registrador 2
             DadoLido1 = RegAcumulador;
         endcase
 
         case(Fonte2)
-          2'b00, 2'b00: //Lê Registrador 0
+          2'b00: //Lê Registrador 0
             DadoLido2 = RegFonteA;
-          2'b00, 2'b01: //Lê Registrador 1
+          2'b01: //Lê Registrador 1
             DadoLido2 = RegFonteB;
-          2'b01, 2'b00: //Lê Registrador 2
+          2'b10: //Lê Registrador 2
             DadoLido2 = RegAcumulador;
         endcase
 
       end
 
       $finish ;			
-    end
+  end
 endmodule
