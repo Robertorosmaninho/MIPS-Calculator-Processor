@@ -1,7 +1,7 @@
-module Memoria(clk,ReadPC,ReadWriteAddr,Op2En,Op2RW,Instruction,Data);
+module Memoria(clk,ReadPC,ReadWriteAddr,Datawrite,Op2En,Op2RW,Instruction,Data);
 
 input wire Op2En,Op2RW,clk;
-input wire[31:0] ReadPC,ReadWriteAddr;
+input wire[31:0] ReadPC,ReadWriteAddr,Datawrite;
 
 
 output reg[31:0]  Data,Instruction;
@@ -19,13 +19,18 @@ end
 
 always@(*)
 begin
+    //a second operation in high level
     if(Op2En == 1'b1) 
     begin
+        //a read of memory at low level
         if(Op2RW == 1'b0) 
         begin
             Data = memory[ReadWriteAddr];
         end
-        
+        else 
+        //a write at high level
+        begin
+            memory[ReadWriteAddr] = DataWrite;
     end
 
     Instruction = memory[ReadPC];
