@@ -19,7 +19,7 @@ end
 
 always@(*)
 begin
-    //a second operation in high level
+    //if a second operation is to be added to memory at high level
     if(Op2En == 1'b1) 
     begin
         //a read of memory at low level
