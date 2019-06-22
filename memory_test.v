@@ -3,7 +3,7 @@ module memory_test()
     wire Op2En,Op2RW;
     wire[31:0] ReadPC,ReadWriteAddr,DataWrite;
 
-    output reg[31:0]
+    output reg[31:0] Data,Instruction
 
     //instanciating 
     memory_test(
