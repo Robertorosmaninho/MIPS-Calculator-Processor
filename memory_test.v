@@ -1,18 +1,18 @@
-module memory_test()
- 
-    wire Op2En,Op2RW;
-    wire[31:0] ReadPC,ReadWriteAddr,DataWrite;
+module memory_test();
+     
+ wire Op2En,Op2RW;
+ wire[31:0] ReadPC,ReadWriteAddr,DataWrite;
 
  output reg[31:0] Data,Instruction;
 
     //instanciating 
-    memory_test dut(
-     .Op2En(Op2En),
-     .Op2Rw(Op2RW),
-     .ReadPC(ReadPC),
-     .ReadWriteAddr(ReadWriteAddr),
-     .Data(Data),
-     .Instruction(Instruction)),
+memory_test dut(
+         .Op2En(Op2En),
+         .Op2Rw(Op2RW),
+         .ReadPC(ReadPC),
+         .ReadWriteAddr(ReadWriteAddr),
+         .Data(Data),
+         .Instruction(Instruction));
 
 //setting the clock
 always
@@ -24,7 +24,7 @@ end
 //initial test
 initial
    begin
-      $readmemb("memory.txt", memory);
+      $readmemh("memory.txt", memory);
        ReadWriteAddr = 5'b00000; ReadPC = 5'b00000; Op2En = 1; Op2RW = 0; #20;
        ReadWriteAddr = 5'b00000; ReadPC = 5'b00000; Op2En = 0; Op2RW = 1; #20;
 
@@ -33,7 +33,6 @@ initial
 
        ReadWriteAddr = 5'b00010; ReadPC = 5'b00010; Op2En = 1; Op2RW = 0; #20;
        ReadWriteAddr = 5'b00010; ReadPC = 5'b00010; Op2En = 0; Op2RW = 1; #20;
-
 $stop;
 //end of tests
 end
