@@ -14,10 +14,10 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2
   reg [31:0] RegFonteB; //Registrador de 32Bits - Registrador 1
   reg [31:0] RegAcumulador; //Registrador de 32Bits - Registrador 2
 
+
   //Borda de Decida
   always@(negedge Clock) begin
-  //$dumpfile("BancoReg.vcd");
-  //$dumpvars;
+
     //Corpo - Escrita
     if(Escrita == 1) begin
       case(IdReg) 
@@ -55,7 +55,5 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2
         endcase
 
       end
-
-      $finish ;			
   end
 endmodule
