@@ -6,7 +6,7 @@ module memory_test();
  output reg[31:0] Data,Instruction;
 
     //instanciating 
-Memory memory(
+Memoria memory(
          .Op2En(Op2En),
          .Op2Rw(Op2RW),
          .ReadPC(ReadPC),
