@@ -19,7 +19,7 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2
   //$dumpfile("BancoReg.vcd");
   //$dumpvars;
     //Corpo - Escrita
-    if(Escrita == 1'b1) begin
+    if(Escrita == 1) begin
       case(IdReg) 
         2'b00: //Escreve no Registrador 0
           RegFonteA = Dado; 
@@ -33,8 +33,9 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2
 
   //Borda de Subida
   always@(posedge Clock) begin
+
     //Corpo - Leitura
-      if(Escrita == 1'b0) begin
+      if(Escrita == 0) begin
         case(Fonte1) //A partiri dessa parte funciona
           2'b00: //Lê Registrador 0
             DadoLido1 = RegFonteA;
