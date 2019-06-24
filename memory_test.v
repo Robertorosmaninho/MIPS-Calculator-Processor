@@ -1,14 +1,16 @@
 module memory_test();
-     
+    
  wire Op2En,Op2RW;
- wire[31:0] ReadPC,ReadWriteAddr,DataWrite;
+ reg [31:0] ReadPC,ReadWriteAddr,DataWrite;
 
- output reg[31:0] Data,Instruction;
+ wire [31:0] Data,Instruction;
+ reg [31:0] _memory[1023:0];
 
+reg _clk;
     //instanciating 
-Memoria memory(
+Memoria memory(.clk(_clk),
          .Op2En(Op2En),
-         .Op2Rw(Op2RW),
+         .Op2RW(Op2RW),
          .ReadPC(ReadPC),
          .ReadWriteAddr(ReadWriteAddr),
          .Data(Data),
@@ -17,22 +19,31 @@ Memoria memory(
 //setting the clock
 always
 begin
-    clk = 1; #10;
-    clk = 0; #10;
+    _clk = 1; #10;
+    _clk = 0; #10;
+end
+
+initial begin
+  $dumpfile("Memory.vcd");
+  $dumpvars(0, memory_test);
 end
 
 //initial test
 initial
    begin
-      $readmemh("memory.txt", memory);
-       ReadWriteAddr = 5'b00000; ReadPC = 5'b00000; Op2En = 1; Op2RW = 0; #20;
-       ReadWriteAddr = 5'b00000; ReadPC = 5'b00000; Op2En = 0; Op2RW = 1; #20;
+      $readmemh("memory.txt", _memory);
+       ReadWriteAddr[31:0] <= 5'b0;
+      // Op2En <= 1'b1; Op2RW <=1'b0;
+       #20;
+       ReadWriteAddr[31:0] <= 5'b0;
+      //Op2En <= 1'b0; Op2RW <= 1'b1;
+        #20;
 
-       ReadWriteAddr = 5'b00001; ReadPC = 5'b00001; Op2En = 1; Op2RW = 0; #20;
-       ReadWriteAddr = 5'b00001; ReadPC = 5'b00001; Op2En = 0; Op2RW = 1; #20;
+      // ReadWriteAddr = 5'b1; Op2En = 1; Op2RW = 0; #20;
+      // ReadWriteAddr = 5'b1; Op2En = 0; Op2RW = 1; #20;
 
-       ReadWriteAddr = 5'b00010; ReadPC = 5'b00010; Op2En = 1; Op2RW = 0; #20;
-       ReadWriteAddr = 5'b00010; ReadPC = 5'b00010; Op2En = 0; Op2RW = 1; #20;
+       //ReadWriteAddr = 5'b10; Op2En = 1; Op2RW = 0; #20;
+       //ReadWriteAddr = 5'b10; Op2En = 0; Op2RW = 1; #20;
 $stop;
 //end of tests
 end
