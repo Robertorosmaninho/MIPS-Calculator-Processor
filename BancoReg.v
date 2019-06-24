@@ -43,6 +43,8 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2
             DadoLido1 = RegFonteB;
           2'b10: //Lê Registrador 2
             DadoLido1 = RegAcumulador;
+          2'b11: //Lê o Valor ZERO
+            DadoLido1 = 32'b0;
         endcase
 
         case(Fonte2)
@@ -52,6 +54,8 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2
             DadoLido2 = RegFonteB;
           2'b10: //Lê Registrador 2
             DadoLido2 = RegAcumulador;
+          2'b11: //Lê o Valor ZERO
+            DadoLido2 = 32'b0;
         endcase
 
       end
