@@ -6,13 +6,13 @@ module memory_test()
  output reg[31:0] Data,Instruction;
 
     //instanciating 
-    memory_test(
-         .Op2En(Op2En);
-         .Op2Rw(Op2RW);
-         .ReadPC(ReadPC);
-         .ReadWriteAddr(ReadWriteAddr);
-         .Data(Data)
-         .Instruction(Instruction));
+    memory_test dut(
+     .Op2En(Op2En),
+     .Op2Rw(Op2RW),
+     .ReadPC(ReadPC),
+     .ReadWriteAddr(ReadWriteAddr),
+     .Data(Data),
+     .Instruction(Instruction)),
 
 //setting the clock
 always
