@@ -32,7 +32,7 @@ end
 //initial test
 initial
    begin
-       $readmemh("memory.txt", memory[0:3]);
+       $readmemh("memory.txt", memory);
        ReadWriteAddr[31:0] <= 5'b0;
       // Op2En <= 1'b1; Op2RW <=1'b0;
        #20;
