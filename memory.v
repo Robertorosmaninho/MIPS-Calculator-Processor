@@ -21,11 +21,11 @@ module Memoria(clk,ReadPC,ReadWriteAddr,DataWrite,Op2En,Op2RW,Instruction,Data);
     if(Op2En == 1'b1) begin
       //a read of memory at low level
       if(Op2RW == 1'b0) begin
-        Data = memory[ReadWriteAddr];
+        Data = memory[ReadWriteAddr+100];
       end 
       else begin
       //a write at high level
-        memory[ReadWriteAddr] = DataWrite;
+        memory[ReadWriteAddr+100] = DataWrite;
        end
     end
     Instruction = memory[ReadPC];
