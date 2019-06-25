@@ -5,7 +5,7 @@ module memory_test();
  reg [31:0] ReadPC,ReadWriteAddr,DataWrite;
 
  wire [31:0] Data,Instruction;
-    reg [31:0] memory[0:3];
+    reg [31:0] memory[0:1023];
 
 reg _clk;
     //instanciating 
