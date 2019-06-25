@@ -5,7 +5,7 @@ module memory_test();
  reg [31:0] ReadPC,ReadWriteAddr,DataWrite;
 
  wire [31:0] Data,Instruction;
- reg [31:0] memory[1023:0];
+    reg [31:0] memory[0:3];
 
 reg _clk;
     //instanciating 
@@ -32,7 +32,7 @@ end
 //initial test
 initial
    begin
-      $readmemh("memory.txt", memory);
+       $readmemh("memory.txt", memory);
        ReadWriteAddr[31:0] <= 5'b0;
       // Op2En <= 1'b1; Op2RW <=1'b0;
        #20;
