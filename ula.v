@@ -1,4 +1,4 @@
-module ULA(
+module Ula(
         input [31:0] _op1,_op2,  // ULA 32-bits operandos 
         input [3:0] _opcao,// ULA operador
         input _clock,  // clock

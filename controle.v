@@ -1,12 +1,14 @@
-module CONTROLE(
-        input wire _clock,
-        input wire [31:0] _instrucao,
-        output reg [3:0] _ula_op,
-        output reg [1:0] _mem_control,
-        output reg _mem_enable,
-        output reg [1:0] _reg_dest,
-        output reg [24:0] _imediato
-);
+module Controle(_clock, _instrucao, _ula_op, _mem_control, _mem_enable, 
+                                                         _reg_dest, _imediato);
+
+input _clock;
+input [31:0] _instrucao;
+output reg [3:0] _ula_op;
+output reg [1:0] _mem_control;
+output reg _mem_enable;
+output reg [1:0] _reg_dest;
+output reg [24:0] _imediato;
+
 
 always@(*) 
 begin
