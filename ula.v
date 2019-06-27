@@ -2,7 +2,6 @@ module Ula(
         input [31:0] _op1,_op2,  // ULA 32-bits operandos 
         input [3:0] _opcao,// ULA operador
         input _clock,  // clock
-        // output _CarryOut, (ideia)
         output reg [31:0] _result //ULA result
     );
 

@@ -1,11 +1,11 @@
-module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2); 
+module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Flag_mem, Dado, DadoLido1, DadoLido2); 
 
   //Clock
   input Clock;
 
   //Portas I/O
   input [1:0] IdReg, Fonte1, Fonte2;
-  input Escrita;
+  input Escrita, Flag_mem;
   input [31:0] Dado; 
   output reg [31:0] DadoLido1, DadoLido2;
 
@@ -35,17 +35,9 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2
   always@(posedge Clock) begin
 
     //Corpo - Leitura
-      if(Escrita == 0) begin
-        case(Fonte1) //A partiri dessa parte funciona
-          2'b00: //Lê Registrador 0
-            DadoLido1 = RegFonteA;
-          2'b01: //Lê Registrador 1
-            DadoLido1 = RegFonteB;
-          2'b10: //Lê Registrador 2
-            DadoLido1 = RegAcumulador;
-          2'b11: //Lê o Valor ZERO
-            DadoLido1 = 32'b0;
-        endcase
+      if(Escrita == 0 && Flag_mem == 0) begin
+        
+        DadoLido1 = RegAcumulador;
 
         case(Fonte2)
           2'b00: //Lê Registrador 0
@@ -58,6 +50,21 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Dado, DadoLido1, DadoLido2
             DadoLido2 = 32'b0;
         endcase
 
+      end
+
+      if(Escrita == 0 && Flag_mem == 1) begin
+
+        case(Fonte1)
+          2'b00: //Lê Registrador 0
+            DadoLido1 = RegFonteA;
+          2'b01: //Lê Registrador 1
+            DadoLido1 = RegFonteB;
+          2'b10: //Lê Registrador 2
+            DadoLido1 = RegAcumulador;
+          2'b11: //Lê o Valor ZERO
+            DadoLido1 = 32'b0;
+        endcase
+      
       end
   end
 endmodule
