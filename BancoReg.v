@@ -14,7 +14,9 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Flag_mem, Dado, DadoLido1,
   reg [31:0] RegFonteB; //Registrador de 32Bits - Registrador 1
   reg [31:0] RegAcumulador; //Registrador de 32Bits - Registrador 2
 
-
+  initial begin
+    RegAcumulador = 32'b0;
+  end
   //Borda de Decida
   always@(negedge Clock) begin
 
@@ -32,7 +34,7 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Flag_mem, Dado, DadoLido1,
   end
 
   //Borda de Subida
-  always@(posedge Clock) begin
+  always@(*) begin//posedge Clock) begin
 
     //Corpo - Leitura
       if(Escrita == 0 && Flag_mem == 0) begin
@@ -66,5 +68,6 @@ module BancoReg(Clock,IdReg, Fonte1, Fonte2, Escrita, Flag_mem, Dado, DadoLido1,
         endcase
       
       end
+   $display("### Acumulador:", RegAcumulador);
   end
 endmodule

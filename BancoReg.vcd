@@ -1,0 +1,64 @@
+$date
+	Tue Jun 25 22:21:54 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module BancoReg_TestBench $end
+$var wire 32 ! _dl2 [31:0] $end
+$var wire 32 " _dl1 [31:0] $end
+$var reg 32 # _dado [31:0] $end
+$var reg 1 $ _escrita $end
+$var reg 2 % _f1 [1:0] $end
+$var reg 2 & _f2 [1:0] $end
+$var reg 2 ' _id [1:0] $end
+$var reg 1 ( clk $end
+$scope module banco $end
+$var wire 1 ( Clock $end
+$var wire 32 ) Dado [31:0] $end
+$var wire 1 $ Escrita $end
+$var wire 2 * Fonte1 [1:0] $end
+$var wire 2 + Fonte2 [1:0] $end
+$var wire 2 , IdReg [1:0] $end
+$var reg 32 - DadoLido1 [31:0] $end
+$var reg 32 . DadoLido2 [31:0] $end
+$var reg 32 / RegAcumulador [31:0] $end
+$var reg 32 0 RegFonteA [31:0] $end
+$var reg 32 1 RegFonteB [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx 1
+bx 0
+bx /
+bx .
+bx -
+b0 ,
+bx +
+bx *
+b11111100011 )
+x(
+b0 '
+bx &
+bx %
+1$
+b11111100011 #
+bx "
+bx !
+$end
+#5
+0$
+b11111100011 0
+0(
+#10
+b0 %
+b0 *
+#15
+b11111100011 "
+b11111100011 -
+1(

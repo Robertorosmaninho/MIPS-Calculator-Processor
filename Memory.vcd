@@ -1,0 +1,54 @@
+$date
+	Tue Jun 25 22:17:31 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module memory_test $end
+$var wire 1 ! Op2En $end
+$var wire 1 " Op2RW $end
+$var wire 32 # Instruction [31:0] $end
+$var wire 32 $ Data [31:0] $end
+$var reg 32 % ReadPC [31:0] $end
+$var reg 32 & ReadWriteAddr [31:0] $end
+$var reg 1 ' _clk $end
+$scope module memoria $end
+$var wire 32 ( DataWrite [31:0] $end
+$var wire 1 ! Op2En $end
+$var wire 1 " Op2RW $end
+$var wire 32 ) ReadPC [31:0] $end
+$var wire 32 * ReadWriteAddr [31:0] $end
+$var wire 1 ' clk $end
+$var reg 32 + Data [31:0] $end
+$var reg 32 , Instruction [31:0] $end
+$var integer 32 - i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b100 -
+bx ,
+bx +
+b0 *
+bx )
+bz (
+1'
+b0 &
+bx %
+bx $
+bx #
+z"
+z!
+$end
+#10000
+0'
+#20000
+1'
+#30000
+0'
+#40000
+1'

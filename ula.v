@@ -8,6 +8,8 @@ module Ula(
 
     always @(posedge _clock)
     begin
+      $display("op1:", _op1);
+      $display("op2:",_op2);
         case(_opcao)
 
             4'b0001: // Divisão
@@ -20,9 +22,11 @@ module Ula(
                 _result = _op1 - _op2; 
                     
             4'b1000: // Adição
-                _result = _op1 + _op2; 
+             $display("soma:", _op1+_op2);
+             //   _result = _op1 + _op2; 
 
         endcase
+     $display("-----------------");
     end
 
 endmodule

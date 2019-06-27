@@ -1,0 +1,148 @@
+$date
+	Wed Jun 26 23:55:42 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module ProcessadorTest $end
+$var reg 1 ! clk $end
+$scope module process $end
+$var wire 1 ! _clock $end
+$var wire 1 " write_enable $end
+$var wire 32 # ula_result [31:0] $end
+$var wire 4 $ ula_op [3:0] $end
+$var wire 2 % reg_dest [1:0] $end
+$var wire 1 & mem_enable $end
+$var wire 2 ' mem_control [1:0] $end
+$var wire 32 ( instrucao [31:0] $end
+$var wire 32 ) imediato [31:0] $end
+$var wire 32 * data [31:0] $end
+$var wire 32 + dado2 [31:0] $end
+$var wire 32 , dado1 [31:0] $end
+$var reg 32 - _PC [31:0] $end
+$var reg 1 . op2En $end
+$scope module controle $end
+$var wire 1 ! _clock $end
+$var wire 32 / _instrucao [31:0] $end
+$var reg 32 0 _imediato [31:0] $end
+$var reg 2 1 _mem_control [1:0] $end
+$var reg 1 & _mem_enable $end
+$var reg 2 2 _reg_dest [1:0] $end
+$var reg 4 3 _ula_op [3:0] $end
+$var reg 1 " _write_enable $end
+$upscope $end
+$scope module memoria $end
+$var wire 1 & Op2En $end
+$var wire 2 4 Op2RW [1:0] $end
+$var wire 32 5 ReadPC [31:0] $end
+$var wire 1 ! clk $end
+$var wire 32 6 ReadWriteAddr [31:0] $end
+$var wire 32 7 DataWrite [31:0] $end
+$var reg 32 8 Data [31:0] $end
+$var reg 32 9 Instruction [31:0] $end
+$var integer 32 : i [31:0] $end
+$upscope $end
+$scope module registradores $end
+$var wire 1 ! Clock $end
+$var wire 1 " Escrita $end
+$var wire 1 & Flag_mem $end
+$var wire 2 ; Fonte1 [1:0] $end
+$var wire 2 < Fonte2 [1:0] $end
+$var wire 2 = IdReg [1:0] $end
+$var wire 32 > Dado [31:0] $end
+$var reg 32 ? DadoLido1 [31:0] $end
+$var reg 32 @ DadoLido2 [31:0] $end
+$var reg 32 A RegAcumulador [31:0] $end
+$var reg 32 B RegFonteA [31:0] $end
+$var reg 32 C RegFonteB [31:0] $end
+$upscope $end
+$scope module ula $end
+$var wire 1 ! _clock $end
+$var wire 32 D _op1 [31:0] $end
+$var wire 32 E _op2 [31:0] $end
+$var wire 4 F _opcao [3:0] $end
+$var reg 32 G _result [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx G
+b1000 F
+b10 E
+bx D
+bx C
+bx B
+bx A
+bx @
+bx ?
+bx >
+b10 =
+b10 <
+b10 ;
+b100 :
+b10000000000000000000000000010 9
+bx 8
+bx 7
+bx 6
+b0 5
+b0 4
+b1000 3
+b10 2
+b0 1
+b10 0
+b10000000000000000000000000010 /
+0.
+b0 -
+bx ,
+bx +
+bx *
+b10 )
+b10000000000000000000000000010 (
+b0 '
+0&
+b10 %
+b1000 $
+bx #
+0"
+1!
+$end
+#1
+0!
+#2
+b101 )
+b101 0
+b101 E
+b0 %
+b0 2
+b0 ;
+b0 <
+b0 =
+b101 (
+b101 /
+b101 9
+b1 -
+b1 5
+1!
+#3
+0!
+#4
+b10 -
+b10 5
+1!
+#5
+0!
+#6
+b0 )
+b0 0
+b0 E
+b10100000000000000000000000000000 (
+b10100000000000000000000000000000 /
+b10100000000000000000000000000000 9
+b11 -
+b11 5
+1!

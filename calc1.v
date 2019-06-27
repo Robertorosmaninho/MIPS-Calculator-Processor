@@ -51,7 +51,7 @@ end
 
 //Todas as variáveis em X exceto op2En que é  0.
 //Assim termos a só instrução na saida.
-Memoria memoria(.clk(_clock), .ReadPC(_PC), .ReadWriteAddr(imediato), 
+Memoria memoria(.clk(_clock), .ReadPC(_PC), .ReadWriteAddr(ula_result), 
                 .DataWrite(dado1), .Op2En(mem_enable), .Op2RW(mem_control), 
                 .Instruction(instrucao), .Data(data)); 
 
